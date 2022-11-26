@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+{#      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"#}
+{#        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">#}
+      <link rel='stylesheet' href='../static/extra_css.css'>
+      <link rel="stylesheet" href="{{ url_for('static', filename='style_all.css') }}">
+      <link rel='stylesheet' href='../static/style_ele.css'>
+{#       <link rel="stylesheet" href="../static//default.css">#}
+       <link rel="stylesheet" href="../static/layout.css">
+{#       <link rel="stylesheet" href="../static/media-queries.css">#}
+{#       <link rel="stylesheet" href="../static/magnific-popup.css">#}
+      <script src='../static/client.js'></script>
+       <script src="../static/js/modernizr.js">
+        function alertWeChat(){
+         window.alert('wdnmd');
+         window.alert("错了");
+      }
+       </script>
+       <script src="../static/js/init.js"></script>
+
+
+      <title>Object Detection Platform</title>
+
+    <title>
+        {% block title %}
+        {% endblock %}
+
+    </title>
+    <style>
+        .nav{
+            width: 100%;
+        }
+        #nav-box{
+            width: 100%;
+            margin: 0 auto;
+            align-content: center;
+
+        }
+    </style>
+    {% block head %}{% endblock %}
+
+</head>
+<body>
+    <box id="nav-box">
+           <header id="home">
+
+      <nav id="nav-wrap">
+
+{#         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>#}
+{#         <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>#}
+
+         <ul id="nav" class="nav">
+{#            <li class="current"><a class="smoothscroll" href="/">Home</a></li>#}
+            <li><a class="smoothscroll" href="/">Home</a></li>
+            <li><a class="smoothscroll" href="/realtime">Realtime</a></li>
+            <li><a class="smoothscroll" href="/about_me">About</a></li>
+            <li><a class="smoothscroll" href="/whole_frame">Construction</a></li>
+
+
+            <!-- <li><a href="./working/1.html">Working</a></li> -->
+         </ul> <!-- end #nav -->
+
+      </nav> <!-- end #nav-wrap -->
+
+
+   </header>
+    </box>
+{##}
+{#         导航栏 #}
+{#  <div class="container">#}
+{#    <nav class="nav navbar navbar navbar-expand-sm bg-primary navbar-dark justify-content-center">#}
+{#        <ul class="navbar-nav">#}
+{#        <li class="nav-item">#}
+{#          <a class="nav-link" href="/"  type = "submit">Home</a>#}
+{#        </li>#}
+{#      </ul>#}
+{##}
+{#      <ul class="navbar-nav">#}
+{#        <li class="nav-item">#}
+{#          <a class="nav-link" href="/realtime"  type = "submit">Video Processor</a>#}
+{#        </li>#}
+{#      </ul>#}
+{##}
+{#        <ul class="navbar-nav">#}
+{#        <li class="nav-item">#}
+{#          <a class="nav-link" href="/about_me"  type = "submit">About Me</a>#}
+{#        </li>#}
+{#      </ul>#}
+{#    </nav>#}
+{#  </div>#}
+        {% block body %}
+        {% endblock %}
+
+</body>
+</html>

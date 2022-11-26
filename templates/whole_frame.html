@@ -1,0 +1,41 @@
+{% extends "navigation_bar.html" %}
+
+{% block title %}
+    Whole Construction
+{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <style>
+    div{
+        /* margin-top: 5%; */
+        /* width: %; */
+        /* height: 60%; */
+        /* background-color: aqua; */
+        margin: 5% 0;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    img{
+        /* width: 90%; */
+        width: 500px;
+        /* height: 600px; */
+        margin: auto 0;
+        
+    }
+  </style>
+
+{% endblock %}
+
+
+{% block body %}
+  <!-- <h1> FUKC </h1> -->
+    <div class="show-box">
+        <!-- <img src="./whole_frame.svg" alt="svg_fault"  /> -->
+
+        <img src="data:jpeg;base64, {{ img_stream }}"  alt="fault"/>
+
+        <!-- <img src="{{ img_stream }}"/> -->
+    </div>
+{% endblock %}

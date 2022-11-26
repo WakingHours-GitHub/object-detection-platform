@@ -1,0 +1,56 @@
+{% extends "navigation_bar.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block head %}
+  {{ super() }}
+
+{% endblock %}
+
+{% block body %}
+    <div>
+      <div class='center'>
+
+        <div class='title'>Object Detection Platform Based on SSD</div>
+          <div class="show-box">
+            <!-- <img id='image-picked' class='no-display' alt='Chosen Image' height='250'/> -->
+            <img src="data:jpeg;base64, {{ image_url }}" height='250' alt="fault"/>
+            <!-- <img src="{{ image_url }}"/> -->
+
+          </div>
+
+        <div class='content'>
+
+          <div class='no-display'>
+          <form action = "/images" method = "POST"
+            enctype = "multipart/form-data">
+            <input id='file-input'
+                  class='no-display'
+                  type='file'
+                  name='images'
+                  accept='image/png,image/jpeg,image/jpg,video/mp4,video/avi'
+                  onchange='showPicked(this)' />
+          </div>
+
+            <div class="bottom-box">
+              <button class='choose-file-button' type='button' onclick='showPicker()'>Upload file</button>
+            <button id="analyze-button" class="analyze-button" type = "submit">Analyze</button>
+        </div>
+
+          <div class='upload-label'>
+            <label id='upload-label'>No file chosen</label>
+          </div>
+{##}
+{#          <div class='analyze'>#}
+{#            <button id="analyze-button" class="analyze-button" type = "submit">Analyze</button>#}
+{#          </div>#}
+          </form>
+        </div>
+
+    </div>
+
+
+    </div>
+{% endblock %}

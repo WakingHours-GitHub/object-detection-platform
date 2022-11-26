@@ -1,0 +1,24 @@
+{% extends "navigation_bar.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block head %}
+  {{ super() }}
+
+{% endblock %}
+
+{% block body %}
+
+<style>
+  img{
+    margin-top: 5%;
+  }
+</style>
+
+
+<div><img src="{{ url_for('video_feed') }}" width='500px' ></div>
+
+
+{% endblock %}
