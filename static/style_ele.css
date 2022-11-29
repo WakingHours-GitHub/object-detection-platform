@@ -7,15 +7,18 @@ body {
 }
 
 .center {
-    margin: auto;
-    padding: 10px 50px;
+    margin: auto 0;
+    /* padding: 10px 50px; */
     text-align: center;
+    align-items: center;
+    align-content: center;
     font-size: 14px;
 }
 
 .title {
-    font-size: 30px;
+    font-size: 32px;
     margin-top: 1em;
+    /* margin: auto 0; */
     margin-bottom: 2%;
     color: #262626;
 }
@@ -27,7 +30,8 @@ body {
 }
 .show-box{
     height: 140px;
-    min-height: 140px ;
+    /* min-height: 140px ; */
+    align-content: center;
 
 }
 

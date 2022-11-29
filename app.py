@@ -43,15 +43,16 @@ def main_route():  # put application's code here
     if image_name.split(".")[-1] in file_name: # 如果是图片的化
         source_img = cv.imread(file_path)
         h, w, _ = source_img.shape
-        if h > 2000 or w > 2000:
-            h = h // 2
-            w = w // 2
-            source_img = cv.resize(source_img, (int(w), int(h)))
+        # if h > 2000 or w > 2000:
+            # h = h // 2
+            # w = w // 2
+            # source_img = cv.resize(source_img, (int(w), int(h)))
         # img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
         img = Image.fromarray(np.uint8(source_img)) # 转换为Image. 
         img = np.array(yolo.detect_image(img))
         hstack_img = np.hstack([source_img, img])
         cv.imwrite(file_path, hstack_img)
+        
 
         _, img_encoded = cv.imencode('.jpg', hstack_img)
         response = img_encoded.tobytes()

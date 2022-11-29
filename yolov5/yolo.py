@@ -28,7 +28,7 @@ class YOLO(object):
         #   验证集损失较低不代表mAP较高，仅代表该权值在验证集上泛化性能较好。
         #   如果出现shape不匹配，同时要注意训练时的model_path和classes_path参数的修改
         #--------------------------------------------------------------------------#
-        "model_path"        : os.path.join(runtime, 'yolov5/model_data/ep300-loss0.050-val_loss0.060.pth'), 
+        "model_path"        : os.path.join(runtime, 'yolov5/model_data/ep270-loss0.061-val_loss0.061.pth'), 
         "classes_path"      : os.path.join(runtime, 'yolov5/model_data/river_garbage_classes.txt'),
         #---------------------------------------------------------------------#
         #   anchors_path代表先验框对应的txt文件，一般不修改。
