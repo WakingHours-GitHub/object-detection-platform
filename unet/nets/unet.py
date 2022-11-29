@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 
-from nets.resnet import resnet50
-from nets.vgg import VGG16
+from unet.nets.resnet import resnet50
+from unet.nets.vgg import VGG16
 
 
 # 加强特征提取网络:

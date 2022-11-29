@@ -7,7 +7,8 @@ from PIL import Image
 # from ssd import *
 from yolov5.yolo import YOLO
 from yolov5 import *
-
+from unet.unet import Unet
+from unet import *
 import base64
 from utils.camera import *
 
@@ -23,7 +24,6 @@ file_name = ['jpg','jpeg','png']
 video_name = ['mp4','avi']
 
 yolo = YOLO()
-yolo
 @app.route('/images', methods=['POST'])
 def main_route():  # put application's code here
     try:

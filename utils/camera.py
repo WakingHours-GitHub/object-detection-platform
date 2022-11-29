@@ -8,9 +8,13 @@ from PIL import Image
 
 from yolov5.yolo import YOLO
 from yolov5 import *
+from unet.unet import Unet
+from unet import *
+
 
 runtime_path = sys.path[0]
 yolo = YOLO()
+unet = Unet()
 
 class Camera(BaseCamera):
 
@@ -53,19 +57,21 @@ class Camera(BaseCamera):
                     cap.set(cv.CAP_PROP_POS_FRAMES, 0)
 
                 h, w, _ = frame.shape
-                detection_img = frame
+                img = frame
                 if h > 2000 or w > 2000:
                     h = h // 2
                     w = w // 2
-                    detection_img = cv.resize(detection_img, (int(w), int(h)))
-                detection_img = Image.fromarray(np.uint8(detection_img)) # 转换为Image. 
-                detection_img = np.array(yolo.detect_image(detection_img))
+                    img = cv.resize(img, (int(w), int(h)))
+                Image_img = Image.fromarray(np.uint8(img)) # 转换为Image. 
+                segmentation_img = np.array(unet.detect_image(Image_img))
+                
+                detection_img = np.array(yolo.detect_image(segmentation_img*np.array(Image_img)))
 
-                yield cv.imencode('.jpg', np.hstack([frame, detection_img]))[1].tobytes() # to bytes.
+                yield cv.imencode('.jpg', np.hstack([frame, segmentation_img, detection_img]))[1].tobytes() # to bytes.
             else:
                 print("not get cap, please check you camera is opened!")
             
-            cv.waitKey(500)
+            cv.waitKey(50)
 
 
 

@@ -9,8 +9,8 @@ import torch.nn.functional as F
 from PIL import Image
 from torch import nn
 
-from nets.unet import Unet as unet
-from utils.utils import cvtColor, preprocess_input, resize_image, show_config
+from unet.nets.unet import Unet as unet
+from unet.utils.utils import cvtColor, preprocess_input, resize_image, show_config
 
 
 #--------------------------------------------#
@@ -26,7 +26,7 @@ class Unet(object):
         #   训练好后logs文件夹下存在多个权值文件，选择验证集损失较低的即可。
         #   验证集损失较低不代表miou较高，仅代表该权值在验证集上泛化性能较好。
         #-------------------------------------------------------------------#
-        "model_path"    : 'logs/ep030-loss0.137-val_loss0.173.pth',
+        "model_path"    : 'unet/model_data/ep180-loss0.046-val_loss0.059.pth',
         #--------------------------------#
         #   所需要区分的类的个数+1
         #--------------------------------#
@@ -46,7 +46,7 @@ class Unet(object):
         #   mix_type = 1的时候代表仅保留生成的图
         #   mix_type = 2的时候代表仅扣去背景，仅保留原图中的目标
         #-------------------------------------------------#
-        "mix_type"      : 0,
+        "mix_type"      : 2,
         #--------------------------------#
         #   是否使用Cuda
         #   没有GPU可以设置成False
