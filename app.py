@@ -11,6 +11,7 @@ from unet.unet import Unet
 from unet import *
 import base64
 from utils.camera import *
+from utils import global_manager
 
 import sys 
 from pathlib import Path
@@ -18,10 +19,13 @@ runtime_path = sys.path[0]
 print(runtime_path)
 
 app = Flask(__name__, static_folder=os.path.join(runtime_path, "./static"))
+global_manager._init()
 
+global_manager.set_value("real_time_type", "None")
 
 file_name = ['jpg','jpeg','png']
 video_name = ['mp4','avi']
+
 
 yolo = YOLO()
 @app.route('/images', methods=['POST'])
@@ -70,7 +74,9 @@ def main_route():  # put application's code here
             return render_template('image_process.html')
 
     elif image_name.split(".")[-1] in video_name: # 如果是视频:
-        print("video upload")
+        global_manager.set_value("real_time_type", "video")
+        real_time_type = global_manager.get_value("real_time_type")
+        print("video upload", real_time_type)
         with open(os.path.join(runtime_path, "./file_name.txt"), "w") as f_writer:
             f_writer.write(image_name)
             # f_writer.close()
@@ -83,13 +89,22 @@ def main_route():  # put application's code here
 
 @app.route('/')
 def main_page():
+    global_manager.set_value("is_stop", "yes")
+
+    print(global_manager.get_value("is_stop"))
+
     return render_template("index.html")
 
 
 
 @app.route('/realtime')
 def realtime():  # put application's code here
-    return render_template("realtime.html")
+    # real_time_type = "realtime"
+    global_manager.set_value("real_time_type", "realtime")
+    global_manager.set_value("is_stop", "no")
+
+
+    return render_template("video_process.html")
 
 
 @app.route('/about_me')
@@ -121,6 +136,8 @@ def gen(camera):
 @app.route('/video_feed')
 def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
+    global_manager.set_value("is_stop", "no")
+
     return Response(
         gen(Camera()),
         mimetype='multipart/x-mixed-replace; boundary=frame'
